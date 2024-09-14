@@ -1,0 +1,44 @@
+{
+  "albums": [
+    {
+      "id": "the-freewheelin-bob-dylan",
+      "name": "The Freewheelin' Bob Dylan",
+      "releaseDate": "1963-05-27",
+      "songs": [
+        "Blowin' in the Wind",
+        "Girl from the North Country",
+        "Masters of War",
+        "Down the Highway",
+        "Bob Dylan's Blues",
+        "A Hard Rain's a-Gonna Fall",
+        "Don't Think Twice, It's All Right",
+        "Bob Dylan's Dream",
+        "Oxford Town",
+        "Talkin' World War III Blues",
+        "Corrina, Corrina",
+        "Honey, Just Allow Me One More Chance",
+        "I Shall Be Free"
+      ],
+      "coverImage": "/images/freewheelin.jpg",
+      "credits": "Produced by John Hammond"
+    },
+    {
+      "id": "highway-61-revisited",
+      "name": "Highway 61 Revisited",
+      "releaseDate": "1965-08-30",
+      "songs": [
+        "Like a Rolling Stone",
+        "Tombstone Blues",
+        "It Takes a Lot to Laugh, It Takes a Train to Cry",
+        "From a Buick 6",
+        "Ballad of a Thin Man",
+        "Queen Jane Approximately",
+        "Highway 61 Revisited",
+        "Just Like Tom Thumb's Blues",
+        "Desolation Row"
+      ],
+      "coverImage": "/images/highway61.jpg",
+      "credits": "Produced by Bob Johnston"
+    }
+  ]
+}
