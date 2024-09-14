@@ -1,9 +1,31 @@
 {
   "albums": [
     {
+      "id": "bob-dylan",
+      "name": "Bob Dylan",
+      "releaseDate": "19/03/1962",
+      "songs": [
+        "You're No Good",
+        "Talkin' New York",
+        "In My Time of Dyin'",
+        "Man of Constant Sorrow",
+        "Fixin' to Die",
+        "Pretty Peggy-O",
+        "Highway 51 Blues",
+        "Gospel Plow",
+        "Baby, Let Me Follow You Down",
+        "House of the Risin' Sun",
+        "Freight Train Blues",
+        "Song to Woody",
+        "See That My Grave Is Kept Clean"
+      ],
+      "coverImage": "/images/bob-dylan.jpg",
+      "credits": "John Hammond"
+    },
+    {
       "id": "the-freewheelin-bob-dylan",
       "name": "The Freewheelin' Bob Dylan",
-      "releaseDate": "1963-05-27",
+      "releaseDate": "27/05/1963",
       "songs": [
         "Blowin' in the Wind",
         "Girl from the North Country",
@@ -19,13 +41,72 @@
         "Honey, Just Allow Me One More Chance",
         "I Shall Be Free"
       ],
-      "coverImage": "/images/freewheelin.jpg",
-      "credits": "Produced by John Hammond"
+      "coverImage": "/images/the-freewheelin-bob-dylan.jpg",
+      "credits": "John Hammond"
+    },
+    {
+      "id": "the-times-they-are-a-changin",
+      "name": "The Times They Are a-Changin'",
+      "releaseDate": "13/01/1964",
+      "songs": [
+        "The Times They Are a-Changin'",
+        "Ballad of Hollis Brown",
+        "With God on Our Side",
+        "One Too Many Mornings",
+        "North Country Blues",
+        "Only a Pawn in Their Game",
+        "Boots of Spanish Leather",
+        "When the Ship Comes In",
+        "The Lonesome Death of Hattie Carroll",
+        "Restless Farewell"
+      ],
+      "coverImage": "/images/the-times-they-are-a-changin.jpg",
+      "credits": "Tom Wilson"
+    },
+    {
+      "id": "another-side-of-bob-dylan",
+      "name": "Another Side of Bob Dylan",
+      "releaseDate": "08/08/1964",
+      "songs": [
+        "All I Really Want to Do",
+        "Black Crow Blues",
+        "Spanish Harlem Incident",
+        "Chimes of Freedom",
+        "I Shall Be Free No. 10",
+        "To Ramona",
+        "Motorpsycho Nitemare",
+        "My Back Pages",
+        "I Don't Believe You (She Acts Like We Never Have Met)",
+        "Ballad in Plain D",
+        "It Ain't Me Babe"
+      ],
+      "coverImage": "/images/another-side-of-bob-dylan.jpg",
+      "credits": "Tom Wilson"
+    },
+    {
+      "id": "bringing-it-all-back-home",
+      "name": "Bringing It All Back Home",
+      "releaseDate": "22/03/1965",
+      "songs": [
+        "Subterranean Homesick Blues",
+        "She Belongs to Me",
+        "Maggie's Farm",
+        "Love Minus Zero/No Limit",
+        "Outlaw Blues",
+        "On the Road Again",
+        "Bob Dylan's 115th Dream",
+        "Mr. Tambourine Man",
+        "Gates of Eden",
+        "It's Alright, Ma (I'm Only Bleeding)",
+        "It's All Over Now, Baby Blue"
+      ],
+      "coverImage": "/images/bringing-it-all-back-home.jpg",
+      "credits": "Tom Wilson"
     },
     {
       "id": "highway-61-revisited",
       "name": "Highway 61 Revisited",
-      "releaseDate": "1965-08-30",
+      "releaseDate": "30/08/1965",
       "songs": [
         "Like a Rolling Stone",
         "Tombstone Blues",
@@ -37,8 +118,288 @@
         "Just Like Tom Thumb's Blues",
         "Desolation Row"
       ],
-      "coverImage": "/images/highway61.jpg",
-      "credits": "Produced by Bob Johnston"
+      "coverImage": "/images/highway-61-revisited.jpg",
+      "credits": "Bob Johnston"
+    },
+    {
+      "id": "blonde-on-blonde",
+      "name": "Blonde on Blonde",
+      "releaseDate": "16/05/1966",
+      "songs": [
+        "Rainy Day Women #12 & 35",
+        "Pledging My Time",
+        "Visions of Johanna",
+        "One of Us Must Know (Sooner or Later)",
+        "I Want You",
+        "Stuck Inside of Mobile with the Memphis Blues Again",
+        "Leopard-Skin Pill-Box Hat",
+        "Just Like a Woman",
+        "Most Likely You Go Your Way (And I'll Go Mine)",
+        "Temporary Like Achilles",
+        "Absolutely Sweet Marie",
+        "4th Time Around",
+        "Obviously 5 Believers",
+        "Sad Eyed Lady of the Lowlands"
+      ],
+      "coverImage": "/images/blonde-on-blonde.jpg",
+      "credits": "Bob Johnston"
+    },
+    {
+      "id": "john-wesley-harding",
+      "name": "John Wesley Harding",
+      "releaseDate": "27/12/1967",
+      "songs": [
+        "John Wesley Harding",
+        "As I Went Out One Morning",
+        "I Dreamed I Saw St. Augustine",
+        "All Along the Watchtower",
+        "The Ballad of Frankie Lee and Judas Priest",
+        "Drifter's Escape",
+        "Dear Landlord",
+        "I Am a Lonesome Hobo",
+        "I Pity the Poor Immigrant",
+        "The Wicked Messenger",
+        "Down Along the Cove",
+        "I'll Be Your Baby Tonight"
+      ],
+      "coverImage": "/images/john-wesley-harding.jpg",
+      "credits": "Bob Johnston"
+    },
+    {
+      "id": "nashville-skyline",
+      "name": "Nashville Skyline",
+      "releaseDate": "09/04/1969",
+      "songs": [
+        "Girl from the North Country",
+        "Nashville Skyline Rag",
+        "To Be Alone with You",
+        "I Threw It All Away",
+        "Peggy Day",
+        "Lay Lady Lay",
+        "One More Night",
+        "Tell Me That It Isn't True",
+        "Country Pie",
+        "Tonight I'll Be Staying Here with You"
+      ],
+      "coverImage": "/images/nashville-skyline.jpg",
+      "credits": "Bob Johnston"
+    },
+    {
+      "id": "self-portrait",
+      "name": "Self Portrait",
+      "releaseDate": "08/06/1970",
+      "songs": [
+        "All the Tired Horses",
+        "Alberta #1",
+        "I Forgot More Than You'll Ever Know",
+        "Days of 49",
+        "Early Mornin' Rain",
+        "In Search of Little Sadie",
+        "Let It Be Me",
+        "Little Sadie",
+        "Woogie Boogie",
+        "Belle Isle",
+        "Living the Blues",
+        "Like a Rolling Stone",
+        "Copper Kettle",
+        "Gotta Travel On",
+        "Blue Moon",
+        "The Boxer",
+        "The Mighty Quinn (Quinn the Eskimo)",
+        "Take Me as I Am (Or Let Me Go)",
+        "Take a Message to Mary",
+        "It Hurts Me Too",
+        "Minstrel Boy",
+        "She Belongs to Me",
+        "Wigwam",
+        "Alberta #2"
+      ],
+      "coverImage": "/images/self-portrait.jpg",
+      "credits": "Bob Johnston"
+    },
+    {
+      "id": "new-morning",
+      "name": "New Morning",
+      "releaseDate": "19/10/1970",
+      "songs": [
+        "If Not for You",
+        "Day of the Locusts",
+        "Time Passes Slowly",
+        "Went to See the Gypsy",
+        "Winterlude",
+        "If Dogs Run Free",
+        "New Morning",
+        "Sign on the Window",
+        "One More Weekend",
+        "The Man in Me",
+        "Three Angels",
+        "Father of Night"
+      ],
+      "coverImage": "/images/new-morning.jpg",
+      "credits": "Bob Johnston"
+    },
+    {
+      "id": "pat-garrett-and-billy-the-kid",
+      "name": "Pat Garrett & Billy the Kid",
+      "releaseDate": "13/07/1973",
+      "songs": [
+        "Main Title Theme (Billy)",
+        "Cantina Theme (Workin' for the Law)",
+        "Billy 1",
+        "Bunkhouse Theme",
+        "River Theme",
+        "Turkey Chase",
+        "Knockin' on Heaven's Door",
+        "Final Theme",
+        "Billy 4",
+        "Billy 7"
+      ],
+      "coverImage": "/images/pat-garrett-and-billy-the-kid.jpg",
+      "credits": "Gordon Carroll"
+    },
+    {
+      "id": "dylan",
+      "name": "Dylan",
+      "releaseDate": "16/11/1973",
+      "songs": [
+        "Lily of the West",
+        "Can't Help Falling in Love",
+        "Sarah Jane",
+        "The Ballad of Ira Hayes",
+        "Mr. Bojangles",
+        "Mary Ann",
+        "Big Yellow Taxi",
+        "A Fool Such as I",
+        "Spanish Is the Loving Tongue"
+      ],
+      "coverImage": "/images/dylan.jpg",
+      "credits": "Columbia Records"
+    },
+    {
+      "id": "planet-waves",
+      "name": "Planet Waves",
+      "releaseDate": "17/01/1974",
+      "songs": [
+        "On a Night Like This",
+        "Going, Going, Gone",
+        "Tough Mama",
+        "Hazel",
+        "Something There Is About You",
+        "Forever Young",
+        "Forever Young (Continued)",
+        "Dirge",
+        "You Angel You",
+        "Never Say Goodbye",
+        "Wedding Song"
+      ],
+      "coverImage": "/images/planet-waves.jpg",
+      "credits": "Rob Fraboni"
+    },
+    {
+      "id": "blood-on-the-tracks",
+      "name": "Blood on the Tracks",
+      "releaseDate": "20/01/1975",
+      "songs": [
+        "Tangled Up in Blue",
+        "Simple Twist of Fate",
+        "You're a Big Girl Now",
+        "Idiot Wind",
+        "You're Gonna Make Me Lonesome When You Go",
+        "Meet Me in the Morning",
+        "Lily, Rosemary and the Jack of Hearts",
+        "If You See Her, Say Hello",
+        "Shelter from the Storm",
+        "Buckets of Rain"
+      ],
+      "coverImage": "/images/blood-on-the-tracks.jpg",
+      "credits": "Bob Dylan"
+    },
+    {
+      "id": "the-basement-tapes",
+      "name": "The Basement Tapes",
+      "releaseDate": "26/06/1975",
+      "songs": [
+        "Odds and Ends",
+        "Orange Juice Blues (Blues for Breakfast)",
+        "Million Dollar Bash",
+        "Yazoo Street Scandal",
+        "Goin' to Acapulco",
+        "Katie's Been Gone",
+        "Lo and Behold!",
+        "Bessie Smith",
+        "Clothes Line Saga",
+        "Apple Suckling Tree",
+        "Please, Mrs. Henry",
+        "Tears of Rage",
+        "Too Much of Nothing",
+        "Yea! Heavy and a Bottle of Bread",
+        "Ain't No More Cane",
+        "Crash on the Levee (Down in the Flood)",
+        "Ruben Remus",
+        "Tiny Montgomery",
+        "You Ain't Goin' Nowhere",
+        "Don't Ya Tell Henry",
+        "Nothing Was Delivered",
+        "Open the Door, Homer",
+        "Long Distance Operator",
+        "This Wheel's on Fire"
+      ],
+      "coverImage": "/images/the-basement-tapes.jpg",
+      "credits": "Bob Dylan, The Band"
+    },
+    {
+      "id": "desire",
+      "name": "Desire",
+      "releaseDate": "05/01/1976",
+      "songs": [
+        "Hurricane",
+        "Isis",
+        "Mozambique",
+        "One More Cup of Coffee (Valley Below)",
+        "Oh, Sister",
+        "Joey",
+        "Romance in Durango",
+        "Black Diamond Bay",
+        "Sara"
+      ],
+      "coverImage": "/images/desire.jpg",
+      "credits": "Don DeVito"
+    },
+    {
+      "id": "street-legal",
+      "name": "Street-Legal",
+      "releaseDate": "15/06/1978",
+      "songs": [
+        "Changing of the Guards",
+        "New Pony",
+        "No Time to Think",
+        "Baby, Stop Crying",
+        "Is Your Love in Vain?",
+        "Señor (Tales of Yankee Power)",
+        "True Love Tends to Forget",
+        "We Better Talk This Over",
+        "Where Are You Tonight? (Journey Through Dark Heat)"
+      ],
+      "coverImage": "/images/street-legal.jpg",
+      "credits": "Don DeVito"
+    },
+    {
+      "id": "slow-train-coming",
+      "name": "Slow Train Coming",
+      "releaseDate": "20/08/1979",
+      "songs": [
+        "Gotta Serve Somebody",
+        "Precious Angel",
+        "I Believe in You",
+        "Slow Train",
+        "Gonna Change My Way of Thinking",
+        "Do Right to Me Baby (Do Unto Others)",
+        "When You Gonna Wake Up",
+        "Man Gave Names to All the Animals",
+        "When He Returns"
+      ],
+      "coverImage": "/images/slow-train-coming.jpg",
+      "credits": "Jerry Wexler, Barry Beckett"
     }
   ]
 }
