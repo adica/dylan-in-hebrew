@@ -68,17 +68,17 @@
       "name": "Another Side of Bob Dylan",
       "releaseDate": "08/08/1964",
       "songs": [
-        { "songIg": 401, "name": "All I Really Want to Do"},
-        { "songIg": 402, "name": "Black Crow Blues"},
-        { "songIg": 403, "name": "Spanish Harlem Incident"},
-        { "songIg": 404, "name": "Chimes of Freedom"},
-        { "songIg": 405, "name": "I Shall Be Free No. 10"},
-        { "songIg": 406, "name": "To Ramona"},
-        { "songIg": 407, "name": "Motorpsycho Nitemare"},
-        { "songIg": 408, "name": "My Back Pages"},
-        { "songIg": 409, "name": "I Don't Believe You (She Acts Like We Never Have Met)"},
-        { "songIg": 410, "name": "Ballad in Plain D"},
-        { "songIg": 411, "name": "It Ain't Me Babe"}
+        { "songId": 401, "name": "All I Really Want to Do"},
+        { "songId": 402, "name": "Black Crow Blues"},
+        { "songId": 403, "name": "Spanish Harlem Incident"},
+        { "songId": 404, "name": "Chimes of Freedom"},
+        { "songId": 405, "name": "I Shall Be Free No. 10"},
+        { "songId": 406, "name": "To Ramona"},
+        { "songId": 407, "name": "Motorpsycho Nitemare"},
+        { "songId": 408, "name": "My Back Pages"},
+        { "songId": 409, "name": "I Don't Believe You (She Acts Like We Never Have Met)"},
+        { "songId": 410, "name": "Ballad in Plain D"},
+        { "songId": 411, "name": "It Ain't Me Babe"}
       ],
       "coverImage": "/images/another-side-of-bob-dylan.jpg",
       "credits": "Tom Wilson"
