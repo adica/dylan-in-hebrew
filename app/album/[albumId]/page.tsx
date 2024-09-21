@@ -1,13 +1,13 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import {useParams} from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import albumData from '../../data/bob-dylan-discography.json';
 
 export default function AlbumPage() {
-    const { id } = useParams();
-    const album = albumData.albums.find((a) => a.id === id);
+    const {albumId} = useParams();
+    const album = albumData.albums.find((a) => a.albumId === albumId);
 
     if (!album) {
         return <div>Album not found</div>;
@@ -15,7 +15,7 @@ export default function AlbumPage() {
 
     return (
         <div className="container mx-auto px-4 py-8">
-           <Link href="/" className="inline-block mb-4 text-blue-500 hover:text-blue-700">
+            <Link href="/" className="inline-block mb-4 text-blue-500 hover:text-blue-700">
                 &larr; Back to All Albums
             </Link>
             <h1 className="text-4xl font-bold mb-4">{album.name}</h1>
@@ -34,9 +34,13 @@ export default function AlbumPage() {
                     <p className="text-xl mb-4">{album.credits}</p>
                     <h2 className="text-2xl font-semibold mb-2">Track List:</h2>
                     <ol className="list-decimal list-inside">
-                        {album.songs.map((song, index) => (
-                            <li key={index} className="mb-1">{song}</li>
-                        ))}
+                        {album.songs.map((song) => {
+                            return (
+                                <li key={`${song.songId}`} className="mb-1">
+                                    <Link key={song.songId} href={`/album/${album.albumId}/${song.songId}`}>{song.name}</Link>
+                                </li>
+                            )
+                        })}
                     </ol>
                 </div>
             </div>

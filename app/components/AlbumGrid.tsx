@@ -9,7 +9,7 @@ const AlbumGrid = () => {
             <h1 className="text-4xl font-bold text-center my-8">Bob Dylan Discography</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {albumData.albums.map((album) => (
-                    <Link href={`/album/${album.id}`} key={album.id}>
+                    <Link href={`/album/${album.albumId}`} key={album.albumId}>
                         <div key={album.id} className="relative group">
                             <div
                                 className="w-full aspect-square bg-gray-200 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 group-hover:scale-105">
