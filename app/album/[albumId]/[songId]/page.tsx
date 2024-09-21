@@ -14,7 +14,7 @@ export default function SongPage() {
     if (!album) {
         return <div>album not found</div>;
     }
-    const song = album.songs.find((s) => s.songId == songId);
+    const song = album.songs.find((s) => s.songId.toString() == songId);
     if (!song) {
         return <div>song not found</div>;
     }
