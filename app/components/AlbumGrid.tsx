@@ -6,7 +6,7 @@ import albumData from '../data/bob-dylan-discography.json';
 const AlbumGrid = () => {
     return (
         <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center my-8">Bob Dylan Discography</h1>
+            <h1 className="text-4xl font-bold text-center my-8 text-gray-500">Bob Dylan Discography</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {albumData.albums.map((album) => (
                     <Link href={`/album/${album.albumId}`} key={album.albumId}>
