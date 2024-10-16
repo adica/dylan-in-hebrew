@@ -38,13 +38,6 @@ export default function SongPage() {
                                     const key = `${songId}-${line}`;
                                     return <li key={key}>{line}<br /></li>
                                 })}
-                                {index < songTranslation.songLyrics.verses.length - 1 && (
-                                    <ul className="pt-6">
-                                        {songTranslation.songLyrics.chorus.map((line, chorusIndex) => (
-                                            <li key={chorusIndex}>{line}</li>
-                                        ))}
-                                    </ul>
-                                )}
                             </ul>
                         )
                     })}
