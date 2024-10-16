@@ -36,8 +36,11 @@ export default function AlbumPage() {
                     <ol className="list-decimal list-inside">
                         {album.songs.map((song) => {
                             return (
-                                <li key={`${song.songId}`} className="mb-1">
-                                    <Link key={song.songId} href={`/album/${album.albumId}/${song.songId}`}>{song.name}</Link>
+                                <li key={`${song.songId}`}
+                                    className={`mb-1 ${song.ytId ? 'text-green-500' : 'text-gray-500'}`}
+                                >
+                                    <Link key={song.songId}
+                                          href={`/album/${album.albumId}/${song.songId}`}>{song.name}</Link>
                                 </li>
                             )
                         })}
