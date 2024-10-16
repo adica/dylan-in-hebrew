@@ -2,6 +2,7 @@
 import {useParams} from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { YouTubeAudioPlayer } from '@/app/components/youtube-audio-player';
 import albumData from '../../../data/bob-dylan-discography.json';
 import translations from '../../../data/translations.heb.json';
 
@@ -28,6 +29,7 @@ export default function SongPage() {
                 &larr; Back to album
             </Link>
             <h1 className="text-4xl font-bold mb-4">{songTranslation?.songName ? `${songTranslation.songName} / ${song.name}` : song.name}</h1>
+            {song.ytId && <YouTubeAudioPlayer videoId={song.ytId.toString()} />}
             {songTranslation?.songLyrics && (
                 <div dir="rtl">
                     {songTranslation?.songLyrics.verses.map((verse, index) => {
