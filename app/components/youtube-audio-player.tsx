@@ -80,7 +80,7 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId}) => {
     const handleStop = () => {
         if (player && isPlayerReady) {
             player.pauseVideo();
-            player.seekTo(0);
+            player.seekTo(0, true);
             setCurrentTime(0); // Reset the current time to 0
         }
     };
@@ -88,7 +88,7 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId}) => {
     // Back to start (seek to 0)
     const handleBackToStart = () => {
         if (player && isPlayerReady) {
-            player.seekTo(0);
+            player.seekTo(0, true);
             setCurrentTime(0);
         }
     };
@@ -97,7 +97,7 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId}) => {
     const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newTime = parseFloat(event.target.value);
         if (player && isPlayerReady) {
-            player.seekTo(newTime);
+            player.seekTo(newTime, true);
             setCurrentTime(newTime);
         }
     };

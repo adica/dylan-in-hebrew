@@ -1,19 +1,36 @@
 declare global {
     interface Window {
         onYouTubeIframeAPIReady: () => void;
+        YT: {
+            Player: any;
+            PlayerState: {
+                UNSTARTED: number;
+                ENDED: number;
+                PLAYING: number;
+                PAUSED: number;
+                BUFFERING: number;
+                CUED: number;
+            };
+        };
     }
 
     namespace YT {
-        class Player {
-            getCurrentTime: Player;
-            constructor(elementId: string | HTMLElement, options: any);
-            getDuration(): void;
-            playVideo(): void;
-            pauseVideo(): void;
-            seekTo(seconds: number): void;
-            unMute(): void;
-            mute(): void;
-            PlayerState: {};
+        interface Player {
+            playVideo: () => void;
+            pauseVideo: () => void;
+            seekTo: (seconds: number, allowSeekAhead: boolean) => void;
+            getDuration: () => number;
+            getCurrentTime: () => number;
+            destroy: () => void;
+        }
+
+        interface PlayerState {
+            UNSTARTED: number;
+            ENDED: number;
+            PLAYING: number;
+            PAUSED: number;
+            BUFFERING: number;
+            CUED: number;
         }
     }
 }
