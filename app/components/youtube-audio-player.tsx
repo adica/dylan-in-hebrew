@@ -1,7 +1,7 @@
 'use client';
 
 import React, {useEffect, useRef, useState} from 'react';
-
+import { PlayIcon, PauseIcon, BackwardIcon } from '@heroicons/react/20/solid';
 // Define the expected prop types for YouTubeAudioPlayer
 interface YouTubeAudioPlayerProps {
     videoId: string;
@@ -132,18 +132,22 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId}) => {
 
             {/* Control Buttons */}
             <div className="controls flex space-x-4">
-                <button onClick={handlePlay} className="bg-green-500 text-white px-4 py-2 rounded">
-                    Play
+                {/* Play Button */}
+                <button onClick={handlePlay} className="bg-green-500 p-2 rounded-full">
+                    <PlayIcon className="h-6 w-6 text-white" />
                 </button>
-                <button onClick={handlePause} className="bg-yellow-500 text-white px-4 py-2 rounded">
-                    Pause
+                {/* Pause Button */}
+                <button onClick={handlePause} className="bg-red-500 p-2 rounded-full">
+                    <PauseIcon className="h-6 w-6 text-white" />
                 </button>
-                <button onClick={handleStop} className="bg-red-500 text-white px-4 py-2 rounded">
-                    Stop
+                {/* Back to Start Button */}
+                <button onClick={handleBackToStart} className="bg-gray-500 p-2 rounded-full">
+                    <BackwardIcon className="h-6 w-6 text-white" />
                 </button>
-                <button onClick={handleBackToStart} className="bg-blue-500 text-white px-4 py-2 rounded">
-                    Back to Start
-                </button>
+                {/* Display song duration next to the buttons */}
+                <label className="text-white ml-4">
+                    Duration: {formatTime(duration)}
+                </label>
             </div>
         </div>
     );
