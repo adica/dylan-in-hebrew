@@ -36,9 +36,10 @@ export default function SongPage() {
                 &larr; Back to album
             </Link>
             <h1 className="text-4xl font-bold mb-4">{songTranslation?.songName ? `${songTranslation.songName} / ${song.name}` : song.name}</h1>
-            <section className="flex flex-col lg:flex-row lg:h-screen">
+            <section className="flex flex-col lg:flex-row">
                 {song.ytId && (
-                    <div className="relative w-full lg:w-1/2 lg:h-64 h-auto">
+                    <div
+                        className="relative w-full lg:w-1/2 lg:h-64 h-auto">
                         <div className="relative w-full overflow-hidden hidden lg:block">
                             <Image
                                 alt="vinyl"
@@ -53,7 +54,7 @@ export default function SongPage() {
                         <YouTubeAudioPlayer videoId={song.ytId.toString()} onPlayingChange={handlePlayingChange} />
                     </div>
                 )}
-                <div className="lg:w-1/2 w-full p-6">
+                <div className="lg:w-1/2 w-full p-6 overflow-y-auto responsive-height">
                     {songTranslation?.songLyrics && (
                         <div dir="rtl">
                             {songTranslation?.songLyrics.verses.map((verse, index) => {
