@@ -37,21 +37,22 @@ export default function SongPage() {
             </Link>
             <h1 className="text-4xl font-bold mb-4">{songTranslation?.songName ? `${songTranslation.songName} / ${song.name}` : song.name}</h1>
             <section className="flex flex-col lg:flex-row lg:h-screen">
-                <div className="relative w-full lg:w-1/2 lg:h-64 h-auto">
-                    <div className="relative w-full overflow-hidden hidden lg:block">
-                        <Image
-                            alt="vinyl"
-                            src="/images/vinyl.png"
-                            layout="responsive"
-                            width={1000}
-                            height={1000}
-                            objectFit="cover"
-                            className={`w-32 h-32 ${isPlaying ? 'rotate' : ''}`}
-                        />
+                {song.ytId && (
+                    <div className="relative w-full lg:w-1/2 lg:h-64 h-auto">
+                        <div className="relative w-full overflow-hidden hidden lg:block">
+                            <Image
+                                alt="vinyl"
+                                src="/images/vinyl.png"
+                                layout="responsive"
+                                width={1000}
+                                height={1000}
+                                objectFit="cover"
+                                className={`w-32 h-32 ${isPlaying ? 'rotate' : ''}`}
+                            />
+                        </div>
+                        <YouTubeAudioPlayer videoId={song.ytId.toString()} onPlayingChange={handlePlayingChange} />
                     </div>
-                    {song.ytId &&
-                        <YouTubeAudioPlayer videoId={song.ytId.toString()} onPlayingChange={handlePlayingChange} />}
-                </div>
+                )}
                 <div className="lg:w-1/2 w-full p-6">
                     {songTranslation?.songLyrics && (
                         <div dir="rtl">
