@@ -5,9 +5,10 @@ import { PlayIcon, PauseIcon, BackwardIcon } from '@heroicons/react/20/solid';
 // Define the expected prop types for YouTubeAudioPlayer
 interface YouTubeAudioPlayerProps {
     videoId: string;
+    onPlayingChange: (isPlaying: boolean) => void; // Callback to notify parent
 }
 
-const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId}) => {
+const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, onPlayingChange}) => {
     const playerRef = useRef<HTMLDivElement>(null);
     const [player, setPlayer] = useState<YT.Player | null>(null);
     const [isPlayerReady, setIsPlayerReady] = useState(false);
@@ -37,6 +38,7 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId}) => {
                         },
                         onStateChange: (event: { data: any; }) => {
                             if (event.data === window.YT.PlayerState.PLAYING) {
+                                onPlayingChange(true); // Video is playing
                                 // Start a timer to update current time when playing
                                 const interval = setInterval(() => {
                                     if (newPlayer && newPlayer.getCurrentTime) {
@@ -45,6 +47,8 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId}) => {
                                     }
                                 }, 1000);
                                 return () => clearInterval(interval);
+                            } else if (event.data === window.YT.PlayerState.PAUSED || event.data === window.YT.PlayerState.ENDED) {
+                                onPlayingChange(false); // Video is paused or ended
                             }
                         },
                         onError: (error: any) => {
