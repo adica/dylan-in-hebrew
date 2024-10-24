@@ -11,12 +11,14 @@
     animation: spin 3s linear infinite; /* 3 seconds for full rotation */
 }
 
+/*
 .responsive-height {
-    height: calc(100vh - 170px); /* Default (Desktop) */
+    height: calc(100vh - 170px); !* Default (Desktop) *!
 }
 
 @media (max-width: 1024px) {
     .responsive-height {
-        height: calc(100vh - 280px); /* Mobile */
+        height: calc(100vh - 280px); !* Mobile *!
     }
 }
+*/
