@@ -4,6 +4,7 @@ import {useParams} from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import {YouTubeAudioPlayer} from '@/app/components/youtube-audio-player';
+import { SongLyrics } from '@/app/components/song-lyrics';
 import albumData from '../../../data/bob-dylan-discography.json';
 import translations from '../../../data/translations.heb.json';
 import "./page.css";
@@ -39,7 +40,7 @@ export default function SongPage() {
             <section className="flex flex-col lg:flex-row">
                 {song.ytId && (
                     <div
-                        className="relative w-full lg:w-1/2 lg:h-64 h-auto">
+                        className="relative w-full lg:w-1/2 lg:h-96 h-auto">
                         <div className="relative w-full overflow-hidden hidden lg:block">
                             <Image
                                 alt="vinyl"
@@ -55,21 +56,7 @@ export default function SongPage() {
                     </div>
                 )}
                 <div className="lg:w-1/2 w-full p-6 overflow-y-auto responsive-height">
-                    {songTranslation?.songLyrics && (
-                        <div dir="rtl">
-                            {songTranslation?.songLyrics.verses.map((verse, index) => {
-                                const key = `${songId}-${verse.length}-${index}`;
-                                return (
-                                    <ul key={key} className="pb-6">
-                                        {verse.map((line) => {
-                                            const key = `${songId}-${line}`;
-                                            return <li key={key}>{line}<br /></li>
-                                        })}
-                                    </ul>
-                                )
-                            })}
-                        </div>
-                    )}
+                    <SongLyrics songId={songId} songTranslation={songTranslation}  />
                 </div>
             </section>
         </div>
