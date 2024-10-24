@@ -1,17 +1,20 @@
 'use client';
 
 import React, {useEffect, useRef, useState} from 'react';
-import { PlayIcon, PauseIcon, BackwardIcon } from '@heroicons/react/20/solid';
+import {PlayIcon, PauseIcon, BackwardIcon} from '@heroicons/react/20/solid';
+
 // Define the expected prop types for YouTubeAudioPlayer
 interface YouTubeAudioPlayerProps {
     videoId: string;
+    songName: string;
     onPlayingChange: (isPlaying: boolean) => void; // Callback to notify parent
 }
 
-const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, onPlayingChange}) => {
+const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, songName, onPlayingChange}) => {
     const playerRef = useRef<HTMLDivElement>(null);
     const [player, setPlayer] = useState<YT.Player | null>(null);
     const [isPlayerReady, setIsPlayerReady] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(false);
     const [duration, setDuration] = useState(0); // Track the duration of the song
     const [currentTime, setCurrentTime] = useState(0); // Track the current playback time
 
@@ -37,7 +40,9 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, onPlayi
                             setDuration(newPlayer.getDuration()); // Set the duration when ready
                         },
                         onStateChange: (event: { data: any; }) => {
-                            if (event.data === window.YT.PlayerState.PLAYING) {
+                            const _isPlaying = event.data === window.YT.PlayerState.PLAYING;
+                            setIsPlaying(_isPlaying);
+                            if (_isPlaying) {
                                 onPlayingChange(true); // Video is playing
                                 // Start a timer to update current time when playing
                                 const interval = setInterval(() => {
@@ -89,14 +94,6 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, onPlayi
         }
     };
 
-    // Back to start (seek to 0)
-    const handleBackToStart = () => {
-        if (player && isPlayerReady) {
-            player.seekTo(0, true);
-            setCurrentTime(0);
-        }
-    };
-
     // Handle slider change (seeking)
     const handleSliderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newTime = parseFloat(event.target.value);
@@ -114,45 +111,41 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, onPlayi
     };
 
     return (
-        <div className="audio-player">
+        <div className="audio-player w-full">
             {/* Hidden YouTube iframe */}
             <div style={{display: 'none'}}>
                 <div ref={playerRef}></div>
             </div>
+            <input
+                type="range"
+                min="0"
+                max={duration}
+                value={currentTime}
+                onChange={handleSliderChange}
+                className="slider w-full"
+            />
 
             {/* Display song duration and current time */}
             <div className="time-display flex items-center justify-between w-full mb-4">
                 <span>{formatTime(currentTime)}</span>
-                <input
-                    type="range"
-                    min="0"
-                    max={duration}
-                    value={currentTime}
-                    onChange={handleSliderChange}
-                    className="slider w-full mx-4"
-                />
+                <div className="flex items-center gap-2">
+                    {/* Control Buttons */}
+                    <div className="controls flex space-x-4">
+                        {!isPlaying ? (
+                            <button onClick={handlePlay} className="bg-gray-100 p-2 rounded-full">
+                                <PlayIcon className="h-6 w-6 text-black" />
+                            </button>
+                        ) : (
+                            <button onClick={handlePause} className="bg-gray-100 p-2 rounded-full">
+                                <PauseIcon className="h-6 w-6 text-black" />
+                            </button>
+                        )}
+                    </div>
+                </div>
                 <span>{formatTime(duration)}</span>
             </div>
 
-            {/* Control Buttons */}
-            <div className="controls flex space-x-4">
-                {/* Play Button */}
-                <button onClick={handlePlay} className="bg-green-500 p-2 rounded-full">
-                    <PlayIcon className="h-6 w-6 text-white" />
-                </button>
-                {/* Pause Button */}
-                <button onClick={handlePause} className="bg-red-500 p-2 rounded-full">
-                    <PauseIcon className="h-6 w-6 text-white" />
-                </button>
-                {/* Back to Start Button */}
-                <button onClick={handleBackToStart} className="bg-gray-500 p-2 rounded-full">
-                    <BackwardIcon className="h-6 w-6 text-white" />
-                </button>
-                {/* Display song duration next to the buttons */}
-                <label className="text-white ml-4">
-                    Duration: {formatTime(duration)}
-                </label>
-            </div>
+
         </div>
     );
 };
