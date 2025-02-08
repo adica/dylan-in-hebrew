@@ -1,29 +1,33 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
-export default function PageTransition({ children }: { children: React.ReactNode }) {
+const PageTransition = ({ children }: { children: React.ReactNode }) => {
     const pathname = usePathname();
-    const [displayedPath, setDisplayedPath] = useState(pathname);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const [displayChildren, setDisplayChildren] = useState(children);
 
-    // Prevent animation from triggering twice
     useEffect(() => {
-        setDisplayedPath(pathname);
-    }, [pathname]);
+        if (pathname) {
+            setIsTransitioning(true);
+            const timer = setTimeout(() => {
+                setDisplayChildren(children);
+                setIsTransitioning(false);
+            }, 300); // Match this with CSS transition duration
+            return () => clearTimeout(timer);
+        }
+    }, [pathname, children]);
 
     return (
-        <AnimatePresence mode="wait">
-            <motion.div
-                key={displayedPath} // Ensures animation only runs once per navigation
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5 }}
-            >
-                {children}
-            </motion.div>
-        </AnimatePresence>
+        <div
+            className={`transition-opacity duration-300 ease-in-out ${
+                isTransitioning ? 'opacity-0' : 'opacity-100'
+            }`}
+        >
+            {displayChildren}
+        </div>
     );
-}
+};
+
+export default PageTransition;
