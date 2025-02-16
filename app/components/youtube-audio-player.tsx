@@ -111,22 +111,65 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, songNam
     };
 
     return (
-        <div className="audio-player w-full">
-            {/* Hidden YouTube iframe */}
+        <div className="audio-player w-full flex flex-col p-0 m-0 h-[80px]">
+        {/* Hidden YouTube iframe */}
             <div style={{display: 'none'}}>
                 <div ref={playerRef}></div>
             </div>
-            <input
-                type="range"
-                min="0"
-                max={duration}
-                value={currentTime}
-                onChange={handleSliderChange}
-                className="slider w-full"
-            />
+
+            <div className="relative w-full group">
+                {/* Background track (thin when not hovered) */}
+                <div
+                    className="absolute top-1/2 left-0 w-full h-[3px] bg-gray-300 rounded-full
+                   transition-all duration-200 group-hover:h-[6px]"
+                    style={{ transform: "translateY(-50%)" }}
+                ></div>
+
+                {/* Progress bar (hidden initially, thickens on hover) */}
+                <div
+                    className="absolute top-1/2 left-0 bg-gray-500 rounded-full
+                   transition-all duration-200 group-hover:h-[6px]"
+                    style={{
+                        width: `${(currentTime / duration) * 100}%`,
+                        transform: "translateY(-50%)",
+                        height: "3px", // Default height
+                    }}
+                ></div>
+
+                {/* Range input (thumb is only visible on hover) */}
+                <input
+                    type="range"
+                    min="0"
+                    max={duration}
+                    value={currentTime}
+                    onChange={handleSliderChange}
+                    className="w-full h-[3px] appearance-none bg-transparent absolute top-1/2 left-0 z-10
+                   transition-all duration-200 group-hover:h-[6px]
+                   [&::-webkit-slider-runnable-track]:bg-transparent
+                   [&::-moz-range-track]:bg-transparent
+
+                   [&::-webkit-slider-thumb]:appearance-none
+                   [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4
+                   [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2
+                   [&::-webkit-slider-thumb]:border-gray-500 [&::-webkit-slider-thumb]:rounded-full
+                   [&::-webkit-slider-thumb]:opacity-0 group-hover:[&::-webkit-slider-thumb]:opacity-100
+                   [&::-webkit-slider-thumb]:transition-opacity
+
+                   [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4
+                   [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2
+                   [&::-moz-range-thumb]:border-gray-500 [&::-moz-range-thumb]:rounded-full
+                   [&::-moz-range-thumb]:opacity-0 group-hover:[&::-moz-range-thumb]:opacity-100
+                   [&::-moz-range-thumb]:transition-opacity"
+                    style={{ transform: "translateY(-50%)" }}
+                />
+            </div>
+
+
+
+
 
             {/* Display song duration and current time */}
-            <div className="time-display flex items-center justify-between w-full mb-4">
+            <div className="time-display flex items-center justify-between w-full h-full">
                 <span>{formatTime(currentTime)}</span>
                 <div className="flex items-center gap-2">
                     {/* Control Buttons */}
