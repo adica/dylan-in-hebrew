@@ -32,34 +32,48 @@ body {
   }
 }
 
-/* Make the scrollbar thin */
-.custom-scroll::-webkit-scrollbar {
-  width: 6px; /* Adjust the width */
+/* 1️⃣ Reserve space for the scrollbar (but keep it hidden) */
+.custom-scroll {
+  scrollbar-width: thin; /* Keeps the layout stable */
 }
 
-/* Hide scrollbar by default */
+/* 2️⃣ Hide scrollbar completely when not hovering */
+.custom-scroll::-webkit-scrollbar {
+  width: 6px; /* Keeps space reserved */
+  opacity: 0; /* Hides scrollbar */
+}
+
+/* 3️⃣ Show scrollbar smoothly on hover */
+.custom-scroll:hover::-webkit-scrollbar {
+  opacity: 1;
+}
+
+/* 4️⃣ Style the scrollbar thumb */
 .custom-scroll::-webkit-scrollbar-thumb {
   background: transparent;
   border-radius: 10px;
   transition: background 0.3s ease-in-out;
 }
 
-/* Show scrollbar only on hover */
+/* 5️⃣ Show the scrollbar thumb on hover */
 .custom-scroll:hover::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.5); /* Slightly visible */
+  background: rgba(100, 100, 100, 0.5);
 }
 
-/* Hide the scrollbar track (background) */
+/* 6️⃣ Hide scrollbar track */
 .custom-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
-/* Firefox scrollbar */
+/* 7️⃣ Prevent content shift in Firefox */
 .custom-scroll {
-  scrollbar-width: thin; /* Makes it thin */
+  scrollbar-color: transparent transparent; /* Invisible but reserved */
 }
 
+/* 8️⃣ Show scrollbar in Firefox on hover */
 .custom-scroll:hover {
-  scrollbar-color: rgba(100, 100, 100, 0.5) transparent; /* Visible on hover */
+  scrollbar-color: rgba(100, 100, 100, 0.5) transparent;
 }
+
+
 
