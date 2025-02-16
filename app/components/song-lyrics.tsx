@@ -29,7 +29,7 @@ const SongLyrics: React.FC<SongLyricsProps> = ({songId, songTranslation, albumId
             <div
                 className="custom-scroll overflow-y-auto h-[calc(100vh-200px)] relative pr-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-500"
                 style={{direction: 'ltr', textAlign: 'right'}}>
-                <div className="w-full" style={{direction: 'rtl'}}>
+                <div className="w-full mb-3" style={{direction: 'rtl'}}>
                     {songTranslation?.songLyrics.verses.map((verse: string[], index: number) => {
                         const key = `verse-${verse.length}-${index}`;
                         return (
