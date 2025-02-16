@@ -85,7 +85,7 @@ export default function SongPage() {
                                 />
                             </div>
                         </div>
-                        <div className="flex-1 lg:w-1/2 overflow-y-auto">
+                        <div className="flex-1 lg:w-1/2">
                             <div className="px-4">
                                 <SongLyrics
                                     songName={song.name}

@@ -26,17 +26,23 @@ const SongLyrics: React.FC<SongLyricsProps> = ({songId, songTranslation, albumId
                 <h2 className="text-2xl font-bold mb-4">{songTitle}</h2>
             </div>
 
-            {songTranslation?.songLyrics.verses.map((verse: string[], index: number) => {
-                const key = `verse-${verse.length}-${index}`;
-                return (
-                    <ul key={key} className="pb-6">
-                        {verse.map((line) => {
-                            const key = `${songId}-${line}`;
-                            return <li key={key}>{line}<br /></li>
-                        })}
-                    </ul>
-                )
-            })}
+            <div
+                className="custom-scroll overflow-y-auto h-[calc(100vh-200px)] relative pr-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-500"
+                style={{direction: 'ltr', textAlign: 'right'}}>
+                <div className="w-full" style={{direction: 'rtl'}}>
+                    {songTranslation?.songLyrics.verses.map((verse: string[], index: number) => {
+                        const key = `verse-${verse.length}-${index}`;
+                        return (
+                            <ul key={key} className="pb-6">
+                                {verse.map((line) => {
+                                    const key = `${songId}-${line}`;
+                                    return <li key={key}>{line}<br /></li>
+                                })}
+                            </ul>
+                        )
+                    })}
+                </div>
+            </div>
         </div>
     );
 }
