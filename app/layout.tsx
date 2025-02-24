@@ -10,6 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Dylan In Hebrew",
   description: "Dylan In Hebrew",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1
+  }
 };
 
 export default function RootLayout({
@@ -19,9 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-    <body className={inter.className}>
-     <PageTransition>{children}</PageTransition>
-    </body>
+      <head>
+        <meta name="view-transition" content="same-origin" />
+      </head>
+      <body className={inter.className}>
+        <PageTransition>{children}</PageTransition>
+      </body>
     </html>
   );
 }

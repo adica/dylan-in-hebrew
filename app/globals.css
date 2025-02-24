@@ -75,5 +75,58 @@ body {
   scrollbar-color: rgba(100, 100, 100, 0.5) transparent;
 }
 
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slide-from-right {
+  from { transform: translateX(100%); }
+}
+
+@keyframes slide-to-left {
+  to { transform: translateX(-100%); }
+}
+
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: fade-out;
+}
+
+::view-transition-new(root) {
+  animation-name: fade-in;
+}
+
+/* Smooth transitions for images */
+::view-transition-old(album-cover),
+::view-transition-new(album-cover) {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Add this to ensure smooth animations */
+* {
+  -webkit-tap-highlight-color: transparent;
+  backface-visibility: hidden;
+}
+
+.view-transition-wrapper {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
 
 
