@@ -33,20 +33,22 @@ export default function SongPage() {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
     const {albumId, songId} = useParams();
+    const albumIdParam = Array.isArray(albumId) ? albumId[0] : albumId ?? '';
+    const songIdParam = Array.isArray(songId) ? songId[0] : songId ?? '';
 
-    if (!songId) {
+    if (!songIdParam) {
         return <div>song not found</div>;
     }
-    const album = albumData.albums.find((a) => a.albumId === albumId);
+    const album = albumData.albums.find((a) => a.albumId === albumIdParam);
     if (!album) {
         return <div>album not found</div>;
     }
-    const song = album.songs.find((s) => s.songId.toString() == songId);
+    const song = album.songs.find((s) => s.songId.toString() == songIdParam);
     if (!song) {
         return <div>song not found</div>;
     }
 
-    const songTranslation = translations.songs.find((s) => s.songId.toString() == songId);
+    const songTranslation = translations.songs.find((s) => s.songId.toString() == songIdParam);
 
     const ytId = song.ytId ?? '';
     const isPlayable = Boolean(ytId);
@@ -99,15 +101,15 @@ export default function SongPage() {
                                 {hasHebrewLyrics ? (
                                     <SongLyrics
                                         songName={song.name}
-                                        songId={songId}
+                                        songId={songIdParam}
                                         songTranslation={songTranslation}
-                                        albumId={albumId}
+                                        albumId={albumIdParam}
                                     />
                                 ) : (
                                     <OriginalLyrics
                                         songName={song.name}
-                                        songId={songId}
-                                        albumId={albumId}
+                                        songId={songIdParam}
+                                        albumId={albumIdParam}
                                     />
                                 )}
                             </div>

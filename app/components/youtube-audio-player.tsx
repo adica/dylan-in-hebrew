@@ -69,7 +69,7 @@ const YouTubeAudioPlayer: React.FC<YouTubeAudioPlayerProps> = ({videoId, songNam
                 });
             }
         };
-    }, [videoId]);
+    }, [videoId, onPlayingChange]);
 
     // Play the video
     const handlePlay = () => {
