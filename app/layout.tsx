@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Sora } from "next/font/google";
 import PageTransition from './components/page-transitions';
 
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const sora = Sora({ subsets: ["latin"], weight: ["300", "400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
   title: "Dylan In Hebrew",
@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-    <body className={inter.className}>
-     <PageTransition>{children}</PageTransition>
+    <html lang="en" className="h-full">
+    <body className={`${sora.className} h-full bg-[#0b0b0f] text-zinc-100 antialiased`}>
+      <PageTransition>{children}</PageTransition>
     </body>
     </html>
   );

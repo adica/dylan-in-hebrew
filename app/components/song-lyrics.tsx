@@ -20,26 +20,33 @@ const SongLyrics: React.FC<SongLyricsProps> = ({songId, songTranslation, albumId
     return (
         <div dir="rtl">
             <div>
-                <Link href={`/album/${albumId}`} className="inline-block mb-4 text-blue-500 hover:text-blue-700">
-                    &larr; Back to album
+                <Link href={`/album/${albumId}`} className="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white">
+                    <span className="text-base">&larr;</span>
+                    Back to album
                 </Link>
-                <h2 className="text-2xl font-bold mb-4">{songTitle}</h2>
+                <h2 className="mt-4 text-2xl font-semibold text-white">{songTitle}</h2>
             </div>
 
             <div
-                className="custom-scroll overflow-y-auto h-[calc(100vh-200px)] relative pr-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-500"
-                style={{direction: 'ltr', textAlign: 'right'}}>
-                <div className="w-full mb-3" style={{direction: 'rtl'}}>
+                className="custom-scroll relative mt-6 h-[calc(100vh-260px)] overflow-y-auto pr-4 text-base leading-7 text-zinc-200"
+                style={{direction: 'ltr', textAlign: 'right'}}
+            >
+                <div className="w-full pb-2" style={{direction: 'rtl'}}>
                     {songTranslation?.songLyrics.verses.map((verse: string[], index: number) => {
                         const key = `verse-${verse.length}-${index}`;
                         return (
                             <ul key={key} className="pb-6">
                                 {verse.map((line) => {
                                     const key = `${songId}-${line}`;
-                                    return <li key={key}>{line}<br /></li>
+                                    return (
+                                        <li key={key} className="text-zinc-200">
+                                            {line}
+                                            <br />
+                                        </li>
+                                    );
                                 })}
                             </ul>
-                        )
+                        );
                     })}
                 </div>
             </div>

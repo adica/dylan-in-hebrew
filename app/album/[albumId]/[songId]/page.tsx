@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {YouTubeAudioPlayer} from '@/app/components/youtube-audio-player';
 import {SongLyrics} from '@/app/components/song-lyrics';
+import {OriginalLyrics} from '@/app/components/original-lyrics';
 import albumData from '../../../data/bob-dylan-discography.json';
 import translations from '../../../data/translations.heb.json';
 import "./page.css";
@@ -47,62 +48,76 @@ export default function SongPage() {
 
     const songTranslation = translations.songs.find((s) => s.songId.toString() == songId);
 
-    if (!song.ytId) {
-        return (
-            <>
-                <Link href={`/album/${albumId}`} className="inline-block mb-4 text-blue-500 hover:text-blue-700">
-                    &larr; Back to album
-                </Link>
-                <h1 className="text-4xl font-bold mb-4">{songTranslation?.songName ? `${songTranslation.songName} / ${song.name}` : song.name}</h1>
-            </>
-        );
-    }
+    const isPlayable = Boolean(song.ytId);
+    const hasHebrewLyrics = Boolean(songTranslation?.songLyrics);
     return (
-        <div className="bg-black text-white relative">
-            {isSmallScreen && (
-                <div className="fixed top-0 left-0 right-0 h-24 bg-black border-b border-gray-800 z-50">
-                    <div className="h-full flex items-center px-4">
+        <div className="relative min-h-screen bg-[#0b0b0f] text-white">
+            <div className="absolute -top-24 left-10 h-64 w-64 rounded-full bg-red-500/20 blur-3xl" />
+            {isSmallScreen && isPlayable && (
+                <div className="fixed top-0 left-0 right-0 z-50 h-24 border-b border-white/10 bg-black/80 backdrop-blur">
+                    <div className="flex h-full items-center px-4">
                         <YouTubeAudioPlayer songName={song.name} videoId={song.ytId.toString()} onPlayingChange={handlePlayingChange} />
                     </div>
                 </div>
             )}
 
-            <div className={`
-        ${isSmallScreen ? 'mt-24 h-[calc(100vh-96px)]' : 'h-[calc(100vh-88px)]'}
-        overflow-hidden
-      `}>
-                <div className="h-full max-w-[1800px] mx-auto px-6">
-                    <div className="h-full flex flex-col lg:flex-row lg:space-x-8 pt-6">
-                        <div className="hidden sm:block lg:w-1/2">
-                            <div className="w-full max-w-[600px] aspect-square relative mx-auto">
-                                <Image
-                                    src="/images/vinyl.png"
-                                    alt="Album Cover"
-                                    fill
-                                    className={`object-cover rounded-lg ${isPlaying ? 'rotate' : ''}`}
-                                    sizes="(max-width: 610px) 0vw, (max-width: 930px) 80vw, 50vw"
-                                    priority
-                                />
+            <div
+                className={`
+                    ${isSmallScreen && isPlayable ? 'mt-24 h-[calc(100vh-96px)]' : 'h-[calc(100vh-96px)]'}
+                    overflow-hidden
+                `}
+            >
+                <div className="mx-auto h-full max-w-6xl px-6">
+                    <div className="flex h-full flex-col gap-8 pt-8 lg:flex-row lg:items-start">
+                        <div className="hidden lg:block lg:w-1/2">
+                            <div className="relative mx-auto w-full max-w-[520px]">
+                                <div className="absolute inset-0 rounded-3xl bg-red-500/10 blur-3xl" />
+                                <div className="relative aspect-square overflow-hidden rounded-3xl bg-zinc-900/70 p-6 ring-1 ring-white/10">
+                                    <Image
+                                        src={album.coverImage}
+                                        alt={album.name}
+                                        fill
+                                        className="object-cover rounded-2xl"
+                                        sizes="(max-width: 1200px) 45vw, 500px"
+                                        priority
+                                    />
+                                    <div className="absolute -bottom-6 -right-6 h-40 w-40 rounded-full bg-black/40">
+                                        <Image
+                                            src="/images/vinyl.png"
+                                            alt="Vinyl"
+                                            fill
+                                            className={`object-cover ${isPlaying ? 'rotate' : ''}`}
+                                            sizes="160px"
+                                        />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className="flex-1 lg:w-1/2">
-                            <div className="px-4">
-                                <SongLyrics
-                                    songName={song.name}
-                                    songId={songId}
-                                    songTranslation={songTranslation}
-                                    albumId={albumId}
-                                />
+                            <div className="rounded-3xl border border-white/5 bg-zinc-900/50 px-6 py-6">
+                                {hasHebrewLyrics ? (
+                                    <SongLyrics
+                                        songName={song.name}
+                                        songId={songId}
+                                        songTranslation={songTranslation}
+                                        albumId={albumId}
+                                    />
+                                ) : (
+                                    <OriginalLyrics
+                                        songName={song.name}
+                                        songId={songId}
+                                        albumId={albumId}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            {/* Fixed player for medium and large screens */}
-            {!isSmallScreen && (
-                <div className="fixed bottom-0 left-0 right-0 h-22 bg-black border-t border-gray-800">
-                    <div className="h-full flex items-center px-4">
+            {!isSmallScreen && isPlayable && (
+                <div className="fixed bottom-0 left-0 right-0 border-t border-white/10 bg-black/80 backdrop-blur">
+                    <div className="mx-auto flex h-24 max-w-6xl items-center px-6">
                         <YouTubeAudioPlayer songName={song.name} videoId={song.ytId.toString()} onPlayingChange={handlePlayingChange} />
                     </div>
                 </div>
