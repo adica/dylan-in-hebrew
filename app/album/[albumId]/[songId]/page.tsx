@@ -48,7 +48,8 @@ export default function SongPage() {
 
     const songTranslation = translations.songs.find((s) => s.songId.toString() == songId);
 
-    const isPlayable = Boolean(song.ytId);
+    const ytId = song.ytId ?? '';
+    const isPlayable = Boolean(ytId);
     const hasHebrewLyrics = Boolean(songTranslation?.songLyrics);
     return (
         <div className="relative min-h-screen bg-[#0b0b0f] text-white">
@@ -56,7 +57,7 @@ export default function SongPage() {
             {isSmallScreen && isPlayable && (
                 <div className="fixed top-0 left-0 right-0 z-50 h-24 border-b border-white/10 bg-black/80 backdrop-blur">
                     <div className="flex h-full items-center px-4">
-                        <YouTubeAudioPlayer songName={song.name} videoId={song.ytId.toString()} onPlayingChange={handlePlayingChange} />
+                        <YouTubeAudioPlayer songName={song.name} videoId={ytId} onPlayingChange={handlePlayingChange} />
                     </div>
                 </div>
             )}
@@ -118,7 +119,7 @@ export default function SongPage() {
             {!isSmallScreen && isPlayable && (
                 <div className="fixed bottom-0 left-0 right-0 border-t border-white/10 bg-black/80 backdrop-blur">
                     <div className="mx-auto flex h-24 max-w-6xl items-center px-6">
-                        <YouTubeAudioPlayer songName={song.name} videoId={song.ytId.toString()} onPlayingChange={handlePlayingChange} />
+                        <YouTubeAudioPlayer songName={song.name} videoId={ytId} onPlayingChange={handlePlayingChange} />
                     </div>
                 </div>
             )}
