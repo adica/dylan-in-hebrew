@@ -55,7 +55,7 @@ export default function SongPage() {
     const hasHebrewLyrics = Boolean(songTranslation?.songLyrics);
     return (
         <div className="relative min-h-screen bg-[#0b0b0f] text-white">
-            <div className="absolute -top-24 left-10 h-64 w-64 rounded-full bg-red-500/20 blur-3xl" />
+            <div className="pointer-events-none absolute -top-24 left-10 hidden h-64 w-64 rounded-full bg-red-500/20 blur-3xl sm:block" />
             {isSmallScreen && isPlayable && (
                 <div className="fixed top-0 left-0 right-0 z-50 h-24 border-b border-white/10 bg-black/80 backdrop-blur">
                     <div className="flex h-full items-center px-4">
@@ -71,7 +71,16 @@ export default function SongPage() {
                 `}
             >
                 <div className="mx-auto h-full max-w-6xl px-6">
-                    <div className="flex h-full flex-col gap-8 pt-8 lg:flex-row lg:items-start">
+                    <div className="relative z-10 pt-8">
+                        <Link
+                            href={`/album/${albumIdParam}`}
+                            className="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white"
+                        >
+                            <span className="text-base">&larr;</span>
+                            Back to album
+                        </Link>
+                    </div>
+                    <div className="flex h-full flex-col gap-8 pt-6 lg:flex-row lg:items-start">
                         <div className="hidden lg:block lg:w-1/2">
                             <div className="relative mx-auto w-full max-w-[520px]">
                                 <div className="absolute inset-0 rounded-3xl bg-red-500/10 blur-3xl" />

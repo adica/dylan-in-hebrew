@@ -1,5 +1,4 @@
 import React from "react";
-import Link from 'next/link';
 
 interface SongLyricsProps {
     songId: string | string[];
@@ -20,11 +19,7 @@ const SongLyrics: React.FC<SongLyricsProps> = ({songId, songTranslation, albumId
     return (
         <div dir="rtl">
             <div>
-                <Link href={`/album/${albumId}`} className="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white">
-                    <span className="text-base">&larr;</span>
-                    Back to album
-                </Link>
-                <h2 className="mt-4 text-2xl font-semibold text-white">{songTitle}</h2>
+                <h2 className="text-2xl font-semibold text-white">{songTitle}</h2>
             </div>
 
             <div

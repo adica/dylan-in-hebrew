@@ -17,7 +17,7 @@ export default function AlbumPage() {
 
     return (
         <div className="relative">
-            <div className="absolute -top-32 right-10 h-64 w-64 rounded-full bg-red-500/20 blur-3xl" />
+            <div className="pointer-events-none absolute -top-32 right-10 hidden h-64 w-64 rounded-full bg-red-500/20 blur-3xl sm:block" />
             <div className="mx-auto max-w-6xl px-6 py-10">
                 <Link href="/" className="inline-flex items-center gap-2 text-sm text-zinc-400 transition hover:text-white">
                     <span className="text-base">&larr;</span>
@@ -57,8 +57,6 @@ export default function AlbumPage() {
                                 {album.songs.map((song, index) => {
                                     const isPlayable = Boolean(song.ytId);
                                     const hasHebrewLyrics = hebrewSongIds.has(song.songId.toString());
-                                    const flagSrc = hasHebrewLyrics ? '/images/flags/il.svg' : '/images/flags/us.svg';
-                                    const flagLabel = hasHebrewLyrics ? 'Hebrew translation' : 'Original lyrics';
                                     return (
                                         <li key={`${song.songId}`} className="flex items-center justify-between py-3">
                                             <div className="flex items-center gap-4">
@@ -74,14 +72,18 @@ export default function AlbumPage() {
                                                 >
                                                     {song.name}
                                                 </Link>
-                                                <Image
-                                                    src={flagSrc}
-                                                    alt={flagLabel}
-                                                    title={flagLabel}
-                                                    width={18}
-                                                    height={18}
-                                                    className="opacity-80"
-                                                />
+                                                {hasHebrewLyrics ? (
+                                                    <Image
+                                                        src="/images/flags/il.svg"
+                                                        alt="Hebrew translation"
+                                                        title="Hebrew translation"
+                                                        width={18}
+                                                        height={18}
+                                                        className="opacity-80"
+                                                    />
+                                                ) : (
+                                                    <span className="text-[11px] text-zinc-500">Lyrics only</span>
+                                                )}
                                             </div>
                                             <span className={`text-[11px] ${isPlayable ? 'text-red-300' : 'text-zinc-600'}`}>
                                                 {isPlayable ? 'Playable' : 'Lyrics only'}
